@@ -1,0 +1,81 @@
+{% extends 'partial/base.html' %}
+{% block title %} Order {% endblock %}
+{% block content %}
+{% include 'partial/top-nav.html' %}
+ 
+
+</div> 
+<div class="container">
+    <div class="row my-4">
+        <div class="col-md-4">
+
+        </div>
+        <div class="col-md-8">
+            <table class="table bg-white">
+                <thead class="bg-info">
+                    <tr class="text-white">
+                        <th scope="col">#</th>
+                        <th scope="col">Product</th>
+                        <th scope="col">Category</th>
+                        <th scope="col">Quantity</th>
+                        <th scope="col">Order by</th>
+                        
+                        <th scope="col">Location</th>
+                        <th scope="col">Date</th>
+                        <!-- <th scope="col">Status</th> -->
+                        <th scope="col">Status Update</th>
+                        <th scope="col" >Delete</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for order in orders %}
+                    <tr>
+                        <th scope="row"></th>
+                        <td>{{order.product}}</td>
+                        <td>{{order.product.category}}</td>
+                        <td>{{order.order_quantity}}</td>
+                        <td>
+                            {{order.staff.username}}
+                        </td>
+                        <td>
+                            {{order.staff.profile.address}}
+                        </td>
+                        <td>
+                            {{order.date}}
+                        </td>
+
+                       
+                        <td><a href="{% url 'dashboard-order-status' order.id %}">Update order status</a> </td>
+                           <td><a class="text-danger" href="{% url 'dashboard-order-delete' order.id %}">Delete Order</a></td>
+                       
+                        <!-- <td>{{order.status}}</td> -->
+                        
+                       
+                       
+                        {% endfor %}
+                    <!-- </tr>
+                    <tr>
+                        <th scope="row">2</th>
+                        <td>Jacob</td>
+                        <td>Thornton</td>
+                        <td>@fat</td>
+                        <td>
+                            Kenneth
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="row">3</th>
+                        <td>Larry</td>
+                        <td>the Bird</td>
+                        <td>@twitter</td>
+                        <td>
+                            Cecilia
+                        </td>
+                    </tr> -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+</div>
+{% endblock content %}
